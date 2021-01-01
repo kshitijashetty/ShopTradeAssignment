@@ -12,6 +12,7 @@ import "./styles.css";
 import About from "./components/About";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
+const myRef = React.createRef();
 const Header = styled.div`
   box-sizing: border-box;
   width: 100%;
@@ -55,12 +56,11 @@ export default function App() {
   const [data, setData] = useState(null);
   const [tags, setTags] = useState(null);
   const [count, setCount] = useLocalStorage("countC", 0);
-  this.myRef = React.createRef();
 
   var scroll = window.onscroll;
 
   useEffect(() => {
-    var header = this.myRef.current;
+    var header = myRef.current;
     var sticky = header ? header.offsetTop : "";
     window.onscroll = function () {
       myFunction();
@@ -100,20 +100,15 @@ export default function App() {
   return (
     <div className="App">
       <Router>
-        <Header ref={this.myRef}>
+        <Header ref={myRef}>
           <Flex>
-            <SLink activeClassName="sel" ref={this.Tab1} to="/Home">
+            <SLink activeClassName="sel" to="/Home">
               Home
             </SLink>
-            <SLink activeClassName="sel" ref={this.Tab1} to="/About">
+            <SLink activeClassName="sel" to="/About">
               ShopTrade
             </SLink>
-            <SLink
-              activeClassName="sel"
-              ref={this.Tab2}
-              to="/Cart"
-              visible="false"
-            >
+            <SLink activeClassName="sel" to="/Cart" visible="false">
               <CartCount>
                 {" "}
                 Cart{count ? <Circle>{count}</Circle> : null}

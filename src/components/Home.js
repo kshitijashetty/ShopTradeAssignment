@@ -3,6 +3,12 @@ import styled from "styled-components";
 import Card from "./Card";
 import { Cont, Footer, Button as Fbtn } from "./Comp";
 import "../styles.css";
+const myRef = React.createRef();
+const B0 = React.createRef();
+const B1 = React.createRef();
+const B2 = React.createRef();
+const B3 = React.createRef();
+const B4 = React.createRef();
 const Button = styled.button`
   padding: 0.5%;
   margin: 1% 1% 0% 1%;
@@ -22,21 +28,16 @@ const All = styled.span`
 `;
 export default function Home(props) {
   const [items, setItems] = useState(props.items);
-  this.myRef = React.createRef();
-  this.B0 = React.createRef();
-  this.B1 = React.createRef();
-  this.B2 = React.createRef();
-  this.B3 = React.createRef();
-  this.B4 = React.createRef();
-  const arrB = [this.B0, this.B1, this.B2, this.B3, this.B4];
+
+  const arrB = [B0, B1, B2, B3, B4];
   const onFilter = (ref, Tag) => {
     arrB.forEach((btn) =>
       btn.current === ref.current
         ? btn.current.classList.add("selBtn")
         : btn.current.classList.remove("selBtn")
     );
-    if (this.myRef.current) {
-      this.myRef.current.scrollTop = 0;
+    if (myRef.current) {
+      myRef.current.scrollTop = 0;
     }
     return Tag && props.items
       ? setItems(props.items.filter((item) => item.tag === Tag.tag))
@@ -47,11 +48,7 @@ export default function Home(props) {
       <h5>
         All Products:
         <All> ({props.items ? props.items.length : 0} Products)</All>
-        <Button
-          className="selBtn"
-          ref={this.B0}
-          onClick={() => onFilter(this.B0, "")}
-        >
+        <Button className="selBtn" ref={B0} onClick={() => onFilter(B0, "")}>
           All Products
         </Button>
         {props.tags
@@ -67,7 +64,7 @@ export default function Home(props) {
           : null}
       </h5>
       <br />
-      <Cont ref={this.myRef}>
+      <Cont ref={myRef}>
         {items
           ? items.map((item, i) => (
               <Card
