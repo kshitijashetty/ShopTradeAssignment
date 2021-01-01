@@ -116,7 +116,7 @@ export default function Card(props) {
     if (props.remLocalStorage) {
       props.remLocalStorage(count, props.id);
     }
-  }, [count]);
+  }, [props, count]);
   return (
     <CardC
       onMouseOver={(e) => {
