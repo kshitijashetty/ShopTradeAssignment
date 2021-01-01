@@ -1,0 +1,31 @@
+.App {
+  font-family: Roboto Regular;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+  box-sizing: content-box;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+body {
+  margin: 0;
+}
+.card {
+  margin: 0% 2% 2% 0%;
+}
+.sel {
+  font-weight: bold;
+  border-bottom: 2px white solid;
+}
+.selBtn {
+  background: linear-gradient(190.06deg, #181716 0%, #ed4e08 99.97%) !important;
+  color: white !important;
+  outline: none;
+}
